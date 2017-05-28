@@ -16,7 +16,6 @@ alias Fumenaut.Repo
 
 alice  = %User{username: "alice", email: "alice@somesite.com"}
 bob = %User{username: "bob", email: "bob@somesite.com"}
-users = [alice, bob]
 
 Repo.insert!(alice)
 Repo.insert!(bob)
