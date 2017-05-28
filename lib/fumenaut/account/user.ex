@@ -8,6 +8,7 @@ defmodule Fumenaut.Account.User do
   @foreign_key_type :binary_id
   schema "account_users" do
     field :email, :string
+    field :username, :string
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Fumenaut.Account.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email])
-    |> validate_required([:email])
+    |> cast(attrs, [:email, :username])
+    |> validate_required([:email, :username])
   end
 end
