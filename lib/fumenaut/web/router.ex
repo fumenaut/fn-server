@@ -1,4 +1,8 @@
 defmodule Fumenaut.Web.Router do
+  @moduledoc """
+  Fumenaut web router.
+  """
+
   use Fumenaut.Web, :router
 
   pipeline :browser do
@@ -21,8 +25,6 @@ defmodule Fumenaut.Web.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Fumenaut.Web do
-  #   pipe_through :api
-  # end
+  forward "/api", Absinthe.Plug, schema: Fumenaut.Schema
+  forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Fumenaut.Schema
 end
