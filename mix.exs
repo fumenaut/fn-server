@@ -40,7 +40,9 @@ defmodule Fumenaut.Mixfile do
      {:absinthe_plug, "~> 1.3.1"},
      {:absinthe_ecto, git: "https://github.com/absinthe-graphql/absinthe_ecto.git"},
      {:poison, "~> 3.1.0"},
-     {:faker, "~> 0.8.0"}]
+     {:faker, "~> 0.8.0"},
+     {:credo, "~> 0.7.4"},
+     {:dogma, "~> 0.1.15"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
