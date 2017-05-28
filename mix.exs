@@ -35,7 +35,12 @@ defmodule Fumenaut.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:absinthe, "~> 1.3.0"},
+     {:absinthe_plug, "~> 1.3.1"},
+     {:absinthe_ecto, git: "https://github.com/absinthe-graphql/absinthe_ecto.git"},
+     {:poison, "~> 3.1.0"},
+     {:faker, "~> 0.8.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
