@@ -13,12 +13,11 @@ alias Fumenaut.Account.User
 alias Fumenaut.Journal.Smoke
 alias Fumenaut.Repo
 
-alice  = %User{username: "alice", email: "alice@somesite.com"}
-bob = %User{username: "bob", email: "bob@somesite.com"}
+Repo.insert!(%User{username: "alice", email: "alice@somesite.com"})
+Repo.insert!(%User{username: "bob", email: "bob@somesite.com"})
+users = Repo.all(User)
 
-Repo.insert!(alice)
-Repo.insert!(bob)
-
+alice = Enum.at(users, 0)
 for _ <- 1..3 do
   Repo.insert!(%Smoke{
     title: Faker.Lorem.sentence,
@@ -26,6 +25,8 @@ for _ <- 1..3 do
     user_id: alice.id
   })
 end
+
+bob = Enum.at(users, 1)
 for _ <- 1..7 do
     Repo.insert!(%Smoke{
       title: Faker.Lorem.sentence,
