@@ -1,8 +1,11 @@
 defmodule Fumenaut.Account.User do
+  @moduledoc """
+  Fumenaut module providing account user database schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fumenaut.Account.User
-
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
