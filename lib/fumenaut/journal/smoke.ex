@@ -1,4 +1,8 @@
 defmodule Fumenaut.Journal.Smoke do
+  @moduledoc """
+  Fumenaut module providing smoke journal database schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fumenaut.Journal.Smoke
