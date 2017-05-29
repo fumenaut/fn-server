@@ -5,15 +5,15 @@ defmodule Fumenaut.Journal.Smoke do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias Fumenaut.Account.User
   alias Fumenaut.Journal.Smoke
-
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "journal_smokes" do
     field :body, :string
     field :title, :string
-    field :user_id, :binary_id
+    belongs_to :user, User
 
     timestamps()
   end
