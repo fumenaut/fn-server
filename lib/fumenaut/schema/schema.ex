@@ -18,4 +18,27 @@ defmodule Fumenaut.Schema do
       resolve &UserResolver.all/2
     end
   end
+
+  mutation do
+    field :create_smoke, type: :smoke do
+      arg :title, non_null(:string)
+      arg :body, non_null(:string)
+      arg :user_id, non_null(:id)
+
+      resolve &SmokeResolver.create/2
+    end
+
+    field :update_smoke, type: :smoke do
+      arg :id, non_null(:id)
+      arg :smoke, :update_smoke_params
+
+      resolve &SmokeResolver.update/2
+    end
+
+    field :delete_smoke, type: :smoke do
+      arg :id, non_null(:id)
+
+      resolve &SmokeResolver.delete/2
+    end
+  end
 end

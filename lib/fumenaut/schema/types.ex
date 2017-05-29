@@ -19,4 +19,10 @@ defmodule Fumenaut.Schema.Types do
     field :body, :string
     field :user, :user, resolve: assoc(:user)
   end
+
+  input_object :update_smoke_params do
+    field :title, non_null(:string)
+    field :body, non_null(:string)
+    field :user_id, non_null(:id)
+  end
 end
