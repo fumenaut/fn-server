@@ -8,7 +8,7 @@ defmodule Fumenaut.Schema.Types do
 
   object :user do
     field :id, :id
-    field :name, :string
+    field :username, :string
     field :email, :string
     field :smokes, list_of(:smoke), resolve: assoc(:smokes)
   end
