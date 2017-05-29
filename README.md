@@ -14,4 +14,4 @@ Installation involves:
   * Start Phoenix endpoint with `mix phx.server`
 
 Once started, you can visit [`localhost:4000`](http://localhost:4000) from your 
-browser, or explore the graphql api at [`GraphiQL interface`](http://localhost:4000/graphiql).
+browser, or [`explore the GraphQL API`](http://localhost:4000/graphiql).
