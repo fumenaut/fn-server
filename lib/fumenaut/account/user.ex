@@ -6,12 +6,14 @@ defmodule Fumenaut.Account.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Fumenaut.Account.User
+  alias Fumenaut.Journal.Smoke
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "account_users" do
     field :email, :string
     field :username, :string
+    has_many :smokes, Smoke
 
     timestamps()
   end
@@ -19,7 +21,7 @@ defmodule Fumenaut.Account.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email, :username])
-    |> validate_required([:email, :username])
+    |> cast(attrs, [:email, :username, :smokes])
+    |> validate_required([:email, :username, :smokes])
   end
 end
