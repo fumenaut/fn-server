@@ -40,5 +40,12 @@ defmodule Fumenaut.Schema do
 
       resolve &SmokeResolver.delete/2
     end
+
+    field :update_user, type: :user do
+      arg :id, non_null(:id)
+      arg :user, :update_user_params
+
+      resolve &UserResolver.update/2
+    end
   end
 end

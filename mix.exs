@@ -28,7 +28,7 @@ defmodule Fumenaut.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc"},
+    [{:phoenix, "~> 1.3.0-rc", override: true},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.2"},
      {:postgrex, ">= 0.0.0"},
@@ -42,7 +42,9 @@ defmodule Fumenaut.Mixfile do
      {:poison, "~> 3.1.0"},
      {:faker, "~> 0.8.0"},
      {:credo, "~> 0.7.4"},
-     {:dogma, "~> 0.1.15"}]
+     {:dogma, "~> 0.1.15"},
+     {:comeonin, "~> 3.0.2"},
+     {:guardian, "~> 0.14.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

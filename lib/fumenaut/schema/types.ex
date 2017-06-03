@@ -25,4 +25,10 @@ defmodule Fumenaut.Schema.Types do
     field :body, non_null(:string)
     field :user_id, non_null(:id)
   end
+
+  input_object :update_user_params do
+    field :username, :string
+    field :email, :string
+    field :password, :string
+  end
 end
