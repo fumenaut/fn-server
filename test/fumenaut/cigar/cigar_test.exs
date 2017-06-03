@@ -62,4 +62,64 @@ defmodule Fumenaut.CigarTest do
       assert %Ecto.Changeset{} = Cigar.change_country(country)
     end
   end
+
+  describe "manufacturers" do
+    alias Fumenaut.Cigar.Manufacturer
+
+    @valid_attrs %{name: "some name"}
+    @update_attrs %{name: "some updated name"}
+    @invalid_attrs %{name: nil}
+
+    def manufacturer_fixture(attrs \\ %{}) do
+      {:ok, manufacturer} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Cigar.create_manufacturer()
+
+      manufacturer
+    end
+
+    test "list_manufacturers/0 returns all manufacturers" do
+      manufacturer = manufacturer_fixture()
+      assert Cigar.list_manufacturers() == [manufacturer]
+    end
+
+    test "get_manufacturer!/1 returns the manufacturer with given id" do
+      manufacturer = manufacturer_fixture()
+      assert Cigar.get_manufacturer!(manufacturer.id) == manufacturer
+    end
+
+    test "create_manufacturer/1 with valid data creates a manufacturer" do
+      assert {:ok, %Manufacturer{} = manufacturer} = Cigar.create_manufacturer(@valid_attrs)
+      assert manufacturer.name == "some name"
+    end
+
+    test "create_manufacturer/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cigar.create_manufacturer(@invalid_attrs)
+    end
+
+    test "update_manufacturer/2 with valid data updates the manufacturer" do
+      manufacturer = manufacturer_fixture()
+      assert {:ok, manufacturer} = Cigar.update_manufacturer(manufacturer, @update_attrs)
+      assert %Manufacturer{} = manufacturer
+      assert manufacturer.name == "some updated name"
+    end
+
+    test "update_manufacturer/2 with invalid data returns error changeset" do
+      manufacturer = manufacturer_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cigar.update_manufacturer(manufacturer, @invalid_attrs)
+      assert manufacturer == Cigar.get_manufacturer!(manufacturer.id)
+    end
+
+    test "delete_manufacturer/1 deletes the manufacturer" do
+      manufacturer = manufacturer_fixture()
+      assert {:ok, %Manufacturer{}} = Cigar.delete_manufacturer(manufacturer)
+      assert_raise Ecto.NoResultsError, fn -> Cigar.get_manufacturer!(manufacturer.id) end
+    end
+
+    test "change_manufacturer/1 returns a manufacturer changeset" do
+      manufacturer = manufacturer_fixture()
+      assert %Ecto.Changeset{} = Cigar.change_manufacturer(manufacturer)
+    end
+  end
 end

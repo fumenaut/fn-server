@@ -24,6 +24,7 @@ defmodule Fumenaut.Web.Router do
     resources "/users", UserController, except: [:new, :edit]
     resources "/smokes", SmokeController, except: [:new, :edit]
     resources "/countries", CountryController, except: [:new, :edit]
+    resources "/manufacturers", ManufacturerController, except: [:new, :edit]
   end
 
   scope "/", Fumenaut.Web do
