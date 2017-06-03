@@ -13,6 +13,12 @@ defmodule Fumenaut.Web.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :graphql do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+    plug Fumenaut.Web.Context
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
     resources "/users", UserController, except: [:new, :edit]
@@ -25,6 +31,11 @@ defmodule Fumenaut.Web.Router do
     get "/", PageController, :index
   end
 
-  forward "/api", Absinthe.Plug, schema: Fumenaut.Schema
+  scope "/api" do
+    pipe_through :graphql
+
+    forward "/", Absinthe.Plug, schema: Fumenaut.Schema
+  end
+
   forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Fumenaut.Schema
 end

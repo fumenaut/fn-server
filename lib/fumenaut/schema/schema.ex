@@ -47,5 +47,12 @@ defmodule Fumenaut.Schema do
 
       resolve &UserResolver.update/2
     end
+
+    field :login, type: :session do
+      arg :email, non_null(:string)
+      arg :password, non_null(:string)
+
+      resolve &UserResolver.login/2
+    end
   end
 end

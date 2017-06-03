@@ -6,6 +6,10 @@ defmodule Fumenaut.Schema.Types do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Fumenaut.Repo
 
+  object :session do
+    field :token, :string
+  end
+
   object :user do
     field :id, :id
     field :username, :string

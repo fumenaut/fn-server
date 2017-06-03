@@ -3,8 +3,9 @@ defmodule Fumenaut.Schema.UserResolver do
   Fumenaut GraphQL User resolver.
   """
 
-  alias Fumenaut.Repo
+  alias Fumenaut.Account.Session
   alias Fumenaut.Account.User
+  alias Fumenaut.Repo
 
   def all(_args, _info) do
     {:ok, Repo.all(User)}
@@ -21,5 +22,12 @@ defmodule Fumenaut.Schema.UserResolver do
     Repo.get!(User, id)
     |> User.update_changeset(user_params)
     |> Repo.update
+  end
+
+  def login(params, _info) do
+    with {:ok, user} <- Session.authenticate(params, Repo),
+         {:ok, jwt, _} <- Guardian.encode_and_sign(user, :access) do
+      {:ok, %{token: jwt}}
+    end
   end
 end

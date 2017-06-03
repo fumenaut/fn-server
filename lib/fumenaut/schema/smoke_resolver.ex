@@ -2,12 +2,21 @@ defmodule Fumenaut.Schema.SmokeResolver do
   @moduledoc """
   Fumenaut GraphQL Smoke resolver.
   """
+  import Ecto.Query, only: [where: 2]
 
   alias Fumenaut.Repo
   alias Fumenaut.Journal.Smoke
 
+  def all(_args, %{context: %{current_user: %{id: id}}}) do
+    smokes =
+      Smoke
+      |> where(user_id: ^id)
+      |> Repo.all
+    {:ok, smokes}
+  end
+
   def all(_args, _info) do
-    {:ok, Repo.all(Smoke)}
+    {:error, "Not Authorized"}
   end
 
   def find(%{id: id}, _info) do
