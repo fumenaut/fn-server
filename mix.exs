@@ -28,14 +28,23 @@ defmodule Fumenaut.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc"},
+    [{:phoenix, "~> 1.3.0-rc", override: true},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.2"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:absinthe, "~> 1.3.0"},
+     {:absinthe_plug, "~> 1.3.1"},
+     {:absinthe_ecto, git: "https://github.com/absinthe-graphql/absinthe_ecto.git"},
+     {:poison, "~> 3.1.0"},
+     {:faker, "~> 0.8.0"},
+     {:credo, "~> 0.7.4"},
+     {:dogma, "~> 0.1.15"},
+     {:comeonin, "~> 3.0.2"},
+     {:guardian, "~> 0.14.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
