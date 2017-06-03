@@ -23,6 +23,7 @@ defmodule Fumenaut.Web.Router do
     plug :accepts, ["json"]
     resources "/users", UserController, except: [:new, :edit]
     resources "/smokes", SmokeController, except: [:new, :edit]
+    resources "/countries", CountryController, except: [:new, :edit]
   end
 
   scope "/", Fumenaut.Web do
